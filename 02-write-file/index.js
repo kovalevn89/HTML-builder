@@ -13,4 +13,8 @@ stdin.on('data', data => {
     output.write(data);
 });
 
-process.on('exit', () => stdout.write('Bye - bye!\n'));
+process.on('SIGINT', function() {
+    process.exit();
+});
+
+process.on('exit', () => stdout.write('\nBye - bye!\n'));
